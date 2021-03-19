@@ -1,0 +1,36 @@
+{
+  "name": "lint-while-committing",
+  "version": "0.0.1",
+  "source": "src/main.ts",
+  "author": "Matthieu Gicquel",
+  "bin": {
+    "run-behind": "dist/run-behind"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "./scripts/build && watchman-make -p 'src/**/*' 'scripts/**/*' --run './scripts/build'",
+    "build": "./scripts/build",
+    "install-dev": "./scripts/install-dev",
+    "lint": "sleep 5 && eslint src --ext .js,.ts --cache",
+    "typecheck": "tsc --noEmit",
+    "commit": "node ./.build/run-behind.js git-cz 'yarn lint' 'yarn typecheck'"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.3",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "esbuild": "^0.13.4",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "git-cz": "^4.7.6",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "execa": "^5.1.1",
+    "kleur": "^4.1.4",
+    "ora": "^6.0.1"
+  }
+}

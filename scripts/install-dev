@@ -1,0 +1,6 @@
+#!/bin/bash
+
+### Main program ###
+
+chmod +x dist/run-behind
+ln -sf $(pwd)/dist/run-behind /usr/local/bin

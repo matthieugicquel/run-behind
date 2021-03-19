@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "target": "ESNext",
+    "lib": [
+      "ESNext"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "./src/*",
+      ],
+    },
+    "incremental": true,
+    "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "alwaysStrict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "noErrorTruncation": true,
+  },
+  "include": [
+    "src/**/*",
+  ],
+}

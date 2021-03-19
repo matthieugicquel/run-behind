@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+mkdir -p dist
+
+### Main program ###
+
+./node_modules/.bin/esbuild src/main.ts \
+  --bundle \
+  --outfile=dist/run-behind \
+  --platform=node \
+  --target=node14 \
+  --sourcemap \
+  --banner:js='#!/usr/bin/env node' \
+  --log-level=warning
+
+echo `date +%T` "build done"
