@@ -1,12 +1,16 @@
 {
-  "name": "lint-while-committing",
-  "version": "0.0.1",
-  "source": "src/main.ts",
-  "author": "Matthieu Gicquel",
-  "bin": {
-    "run-behind": "dist/run-behind"
-  },
+  "name": "run-behind",
+  "description": "Run one command interactively in the foreground, while other commands run in the background.",
   "license": "MIT",
+  "author": "Matthieu Gicquel",
+  "homepage": "https://github.com/matthieugicquel/run-behind#readme",
+  "repository": "github:matthieugicquel/run-behind",
+  "version": "0.0.1",
+  "files": [
+    "dist/run-behind"
+  ],
+  "source": "src/main.ts",
+  "bin": "./dist/run-behind",
   "scripts": {
     "dev": "./scripts/build && watchman-make -p 'src/**/*' 'scripts/**/*' --run './scripts/build'",
     "build": "./scripts/build",
@@ -24,13 +28,11 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "execa": "^5.1.1",
     "git-cz": "^4.7.6",
+    "kleur": "^4.1.4",
+    "ora": "^6.0.1",
     "prettier": "^2.4.1",
     "typescript": "^4.4.3"
-  },
-  "dependencies": {
-    "execa": "^5.1.1",
-    "kleur": "^4.1.4",
-    "ora": "^6.0.1"
   }
 }
