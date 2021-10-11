@@ -15,7 +15,7 @@
     "dev": "./scripts/build && watchman-make -p 'src/**/*' 'scripts/**/*' --run './scripts/build'",
     "build": "./scripts/build",
     "install-dev": "./scripts/install-dev",
-    "lint": "sleep 5 && eslint src --ext .js,.ts --cache",
+    "lint": "eslint src --ext .js,.ts --cache",
     "typecheck": "tsc --noEmit",
     "commit": "node ./.build/run-behind.js git-cz 'yarn lint' 'yarn typecheck'"
   },
