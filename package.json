@@ -21,7 +21,8 @@
     "lint": "eslint src --ext .js,.ts --cache",
     "typecheck": "tsc --noEmit",
     "commit": "node ./.build/run-behind.js git-cz 'yarn lint' 'yarn typecheck'",
-    "release": "release-it"
+    "release": "release-it",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@types/node": "^16.10.3",
@@ -36,6 +37,8 @@
     "git-cz": "^4.7.6",
     "kleur": "^4.1.4",
     "ora": "^6.0.1",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.4.1",
     "release-it": "^14.11.6",
     "typescript": "^4.4.3"

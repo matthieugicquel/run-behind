@@ -1,0 +1,10 @@
+diff --git a/node_modules/ora/node_modules/cli-cursor/index.js b/node_modules/ora/node_modules/cli-cursor/index.js
+index 8435813..fc3ea00 100644
+--- a/node_modules/ora/node_modules/cli-cursor/index.js
++++ b/node_modules/ora/node_modules/cli-cursor/index.js
+@@ -1,4 +1,4 @@
+-import process from 'node:process';
++import process from 'process';
+ import restoreCursor from 'restore-cursor';
+ 
+ let isHidden = false;

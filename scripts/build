@@ -10,7 +10,7 @@ mkdir -p dist
   --bundle \
   --outfile=dist/run-behind \
   --platform=node \
-  --target=node14 \
+  --target=node12 \
   --sourcemap \
   --banner:js='#!/usr/bin/env node' \
   --log-level=warning

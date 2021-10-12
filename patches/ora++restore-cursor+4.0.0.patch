@@ -1,0 +1,10 @@
+diff --git a/node_modules/ora/node_modules/restore-cursor/index.js b/node_modules/ora/node_modules/restore-cursor/index.js
+index 0c117e9..689a1f7 100644
+--- a/node_modules/ora/node_modules/restore-cursor/index.js
++++ b/node_modules/ora/node_modules/restore-cursor/index.js
+@@ -1,4 +1,4 @@
+-import process from 'node:process';
++import process from 'process';
+ import onetime from 'onetime';
+ import signalExit from 'signal-exit';
+ 
