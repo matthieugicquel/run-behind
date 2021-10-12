@@ -1,6 +1,6 @@
 import type { ExecaReturnValue } from "execa";
 import execa from "execa";
-import { bold, gray, green, red } from "kleur/colors";
+import { bold, gray, green, italic, red } from "kleur/colors";
 import ora from "ora";
 
 process.title = "run-behind";
@@ -29,7 +29,7 @@ async function run_behind(fg_command: string, bg_commands: string[]) {
   while (running_bg_commands.length) {
     const spinner = ora(
       running_bg_commands.length === 1
-        ? `Running ${gray(running_bg_commands[0].command)}`
+        ? gray(running_bg_commands[0].command)
         : `Running ${bold(running_bg_commands.length)} tasks`
     ).start();
 
@@ -37,9 +37,14 @@ async function run_behind(fg_command: string, bg_commands: string[]) {
       command: done_command,
       output,
       is_success,
+      run_time,
     } = await Promise.race(running_bg_commands.map(({ promise }) => promise));
 
-    is_success ? spinner.succeed(gray(done_command)) : spinner.fail(bold(red(done_command)));
+    const time_text = italic(gray(`(${format_timing(run_time)})`));
+    is_success
+      ? spinner.succeed(`${gray(done_command)} ${time_text}`)
+      : spinner.fail(`${bold(red(done_command))} ${time_text}`);
+
     if (output.length) console.log(output); // condition to avoid empty lines on success
 
     running_bg_commands = running_bg_commands.filter(({ command }) => command !== done_command);
@@ -54,16 +59,25 @@ interface BgCommandResult {
   command: string;
   output: string;
   is_success: boolean;
+  run_time: number;
 }
 
 async function exec_and_store_output(command: string): Promise<BgCommandResult> {
+  const start_time = Date.now();
+
   const result = await execa(pretty_please(command), {
     all: true,
     reject: false,
     shell: true,
     preferLocal: true,
   });
-  return { command, output: result.all ?? `Error runninng ${command}`, is_success: result.exitCode === 0 };
+
+  return {
+    command,
+    output: result.all ?? `Error runninng ${command}`,
+    is_success: result.exitCode === 0,
+    run_time: Date.now() - start_time,
+  };
 }
 
 function pretty_please(command: string): string {
@@ -74,4 +88,10 @@ function pretty_please(command: string): string {
 function show_help() {
   // prettier-ignore
   console.log(`${green("Usage")}: run-behind '${gray("<foreground-command>")}' '${gray("<background-command-1>")}' '${gray("<background-command-2>")}' ... '${gray("<background-command-n>")}'`);
+}
+
+function format_timing(ms: number): string {
+  if (ms >= 10000) return `${(ms / 1000).toFixed(0)}s`;
+  if (ms >= 1000) return `${(ms / 1000).toFixed(1)}s`;
+  return `${ms}ms`;
 }
