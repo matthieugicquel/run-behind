@@ -28,6 +28,11 @@ jobs:
       - name: Authenticate with registry
         run: npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
 
+      - name: Git config
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
       - name: Publish release
         run: yarn release
         env:
