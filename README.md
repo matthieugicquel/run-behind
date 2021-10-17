@@ -4,7 +4,7 @@ Run one command interactively in the foreground, while other commands run in the
 
 Use cases:
 - Running linting and typechecking while writing commit messages, instead of after or before like with git hooks
-- Probably others, but commmits is the reason I wrote this for
+- Probably others, but commits is the reason I wrote this for
 
 ![Demo video](https://user-images.githubusercontent.com/10573690/136843956-7cd736d9-e14d-41e3-a534-b06d99533a11.gif)
 

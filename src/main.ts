@@ -52,7 +52,7 @@ async function run_behind(fg_command: string, bg_commands: string[]) {
 }
 
 async function exec_and_show(command: string): Promise<ExecaReturnValue> {
-  return execa(command, { stdio: "inherit", shell: true, reject: false });
+  return execa(command, { stdio: "inherit", shell: true, reject: false, preferLocal: true });
 }
 
 interface BgCommandResult {
