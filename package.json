@@ -22,7 +22,9 @@
     "typecheck": "tsc --noEmit",
     "commit": "node ./.build/run-behind.js git-cz 'yarn lint' 'yarn typecheck'",
     "release": "release-it",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
   },
   "devDependencies": {
     "@types/node": "^16.10.3",
@@ -38,6 +40,7 @@
     "kleur": "^4.1.4",
     "ora": "^6.0.1",
     "patch-package": "^6.4.7",
+    "pinst": "^2.1.6",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.4.1",
     "release-it": "^14.11.6",
