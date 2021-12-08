@@ -24,14 +24,14 @@ yarn run-behind <foreground-command> <background-command-1> <background-command-
 
 ### Example: shared with your team in package.json
 
-```json
-...
+```jsonc
+// ...
   scripts: {
     "lint": "eslint src --ext .js,.ts --cache",
     "typecheck": "tsc --noEmit --incremental",
     "commit": "run-behind git-cz 'yarn lint' 'yarn typecheck'"
   }
-...
+// ...
 ```
 
 ### Example: just for you
