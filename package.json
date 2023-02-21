@@ -5,7 +5,7 @@
   "author": "Matthieu Gicquel",
   "homepage": "https://github.com/matthieugicquel/run-behind#readme",
   "repository": "github:matthieugicquel/run-behind",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "files": [
     "dist/run-behind"
   ],
